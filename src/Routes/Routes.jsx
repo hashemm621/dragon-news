@@ -11,11 +11,15 @@ const router = createBrowserRouter([
     element: <HomeLayout />,
     children: [
       { index: true, element: <Home></Home> },
-        {path: '/category/:id', element: <CategoryNews></CategoryNews>}
+      {
+        path: "/category/:id",
+        element: <CategoryNews></CategoryNews>,
+        loader: () => fetch("/news.json"),
+      },
     ],
   },
   { path: "/about", element: <About></About> },
-      { path: "/career", element: <Career></Career> },
+  { path: "/career", element: <Career></Career> },
   {
     path: "*",
     element: <h2 className="text-8xl text-center">Error 404</h2>,
